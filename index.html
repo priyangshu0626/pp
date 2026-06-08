@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Project ARTHA — Original publication-quality policy research: Should India Introduce a Universal Basic Income in the Age of AI Automation? Features original IAAVI and UBIRI indices, fiscal simulations, state rankings, AI displacement maps, parliamentary intelligence, and the AABIF policy framework." />
+  <title>Project ARTHA: UBI in the Age of AI</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23C9A84C' stroke-width='2'><path d='M3 3v18h18'/><path d='M18.7 8l-5.1 5.2-2.8-2.7L7 14.3'/></svg>" />
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="data/research-data.js"></script>
+</head>
+<body>
+  <!-- LOADING SCREEN -->
+  <div class="loading-screen" id="loading-screen">
+    <svg class="loading-logo" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M3 3v18h18" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="loading-text">Project ARTHA</div>
+    <div class="loading-bar-container">
+      <div class="loading-bar"></div>
+    </div>
+  </div>
+
+  <!-- AMBIENT BACKGROUND -->
+  <div class="ambient-bg">
+    <div class="ambient-orb"></div>
+    <div class="ambient-orb"></div>
+    <div class="ambient-orb"></div>
+  </div>
+
+  <div class="dashboard-wrapper">
+    <!-- ================================================================ -->
+    <!-- LEFT SIDEBAR NAVIGATION                                          -->
+    <!-- ================================================================ -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-box">
+          <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 3v18h18" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="logo-text">
+            <h2>Project ARTHA</h2>
+            <span>Policy Research Platform</span>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <!-- EXPERT NAV ITEMS -->
+        <button class="nav-item expert-nav active" data-tab="executive">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          <span>Executive Summary</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="labor">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          <span>Labour Market</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="ai">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+          <span>AI & Automation</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="iaavi">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+          <span>IAAVI Index</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="ubiri">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"></path></svg>
+          <span>UBIRI Index</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="fiscal">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          <span>Fiscal Simulator</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="scenarios">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          <span>India 2040</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="displacement">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+          <span>Displacement Map</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="parliament">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>Parliamentary</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="minority">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          <span>Minority Impact</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="survey">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+          <span>Survey Design</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="swot">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="12" x2="21" y2="12"></line><line x1="12" y1="3" x2="12" y2="21"></line></svg>
+          <span>SWOT Matrix</span>
+          <span class="nav-badge">NEW</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="aabif">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+          <span>AABIF Framework</span>
+          <span class="nav-badge">★</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="recommendations">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+          <span>Recommendations</span>
+        </button>
+        <button class="nav-item expert-nav" data-tab="bibliography">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          <span>Bibliography</span>
+        </button>
+
+        <!-- CITIZEN NAV ITEMS (Hidden by default) -->
+        <button class="nav-item citizen-nav" data-tab="cit-future">
+          <span>Macroeconomic Projections</span>
+        </button>
+        <button class="nav-item citizen-nav" data-tab="cit-job">
+          <span>Sectoral Displacement</span>
+        </button>
+        <button class="nav-item citizen-nav" data-tab="cit-budget">
+          <span>Fiscal Feasibility Test</span>
+        </button>
+        <button class="nav-item citizen-nav" data-tab="cit-state">
+          <span>Regional Readiness</span>
+        </button>
+        <button class="nav-item citizen-nav" data-tab="cit-equality">
+          <span>Wealth Distribution</span>
+        </button>
+        <button class="nav-item citizen-nav" data-tab="cit-reskill">
+          <span>Labor Transition Matrix</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button id="theme-toggle-btn" class="theme-toggle">
+          <div class="toggle-track">
+            <div class="toggle-thumb">
+              <svg class="sun-icon" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+              <svg class="moon-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </div>
+          </div>
+          <span class="theme-label">Switch Theme</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ================================================================ -->
+    <!-- MAIN CONTENT                                                     -->
+    <!-- ================================================================ -->
+    <main class="main-content">
+      <header class="main-header">
+        <div class="header-title">
+          <span class="header-tag">Original Policy Research · June 2026</span>
+          <h1>Project ARTHA: <span>UBI in the Age of AI</span></h1>
+        </div>
+        <div class="header-actions">
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="dashboard-search" placeholder="Search sections, charts, data..." />
+            <button id="clear-search" class="clear-btn">&times;</button>
+          </div>
+          <div class="mode-toggle-wrapper">
+            <button id="mode-toggle-btn" class="btn btn-primary" style="background-color: var(--accent-gold);">
+              <span class="mode-text">🧑‍🏫 Citizen Mode</span>
+            </button>
+          </div>
+          <button id="print-report-btn" class="btn btn-secondary">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+            <span>Print Report</span>
+          </button>
+        </div>
+      </header>
+
+      <div class="content-body">
+
+        <!-- CITIZEN MODE BANNER -->
+        <div id="citizen-banner" class="citizen-banner" style="display: none;">
+          <div class="banner-icon">🎮</div>
+          <div class="banner-text">
+            <strong>Welcome to the Future Simulator:</strong> We've hidden the complex research. Use the sliders below to play out different futures for India!
+          </div>
+        </div>
+
+        <!-- ============================================================ -->
+        <!-- 1. CITIZEN SIMULATOR: FUTURE SIMULATOR                       -->
+        <!-- ============================================================ -->
+        <section id="section-cit-future" class="dashboard-section citizen-only">
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h2>Macroeconomic Projection Model (2026–2040)</h2>
+              <p>Simulate long-term poverty, unemployment, and GDP growth trajectories under varying UBI and automation scenarios.</p>
+            </div>
+            
+            <div class="sim-controls">
+              <div class="sim-slider-group">
+                <label>Automation Penetration Velocity <span id="sim-ai-val" class="sim-val-badge">High</span></label>
+                <input type="range" id="sim-ai-speed" min="1" max="3" value="3" step="1" />
+                <div class="sim-slider-labels">
+                  <span>Low</span>
+                  <span>Baseline</span>
+                  <span>High</span>
+                </div>
+              </div>
+              <div class="sim-slider-group">
+                <label>UBI Capital Distribution <span id="sim-ubi-val" class="sim-val-badge">Zero</span></label>
+                <input type="range" id="sim-ubi-amount" min="0" max="3" value="0" step="1" />
+                <div class="sim-slider-labels">
+                  <span>Zero</span>
+                  <span>₹500/mo</span>
+                  <span>₹1,000/mo</span>
+                  <span>₹3,000/mo</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-output">
+              <div class="sim-chart-container" style="flex:2.5;">
+                <canvas id="c-sim-future"></canvas>
+              </div>
+              <div class="sim-data-panel" id="sim-summary-box">
+                <h4 class="panel-title">Current Projection</h4>
+                <div class="panel-metric">
+                  <span class="metric-label">2040 Poverty Rate</span>
+                  <span class="metric-value" id="val-poverty">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">2040 Unemployment</span>
+                  <span class="metric-value" id="val-unemp">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Avg GDP Growth</span>
+                  <span class="metric-value" id="val-growth">--</span>
+                </div>
+                <p class="panel-desc" id="sim-desc-future">Loading model...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 2. CITIZEN SIMULATOR: JOB RISK CALCULATOR                    -->
+        <!-- ============================================================ -->
+        <section id="section-cit-job" class="dashboard-section citizen-only">
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h2>Sectoral Displacement Matrix</h2>
+              <p>Analyze task-level automation susceptibility across primary Indian economic sectors.</p>
+            </div>
+            
+            <div class="sim-controls" style="margin-bottom: 20px;">
+              <div class="sim-dropdown-group" style="max-width: 100%;">
+                <select id="sim-job-select" class="form-select">
+                  <option value="IT Services">IT & BPO Services</option>
+                  <option value="Manufacturing">Manufacturing</option>
+                  <option value="Retail & Trade">Retail & Trade</option>
+                  <option value="Agriculture">Agriculture</option>
+                  <option value="Education">Education</option>
+                  <option value="Healthcare">Healthcare</option>
+                  <option value="Transport & Logistics">Transport & Logistics</option>
+                  <option value="Gig Economy">Gig Economy Platform Work</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="sim-output" style="align-items: center;">
+              <div class="sim-chart-container" style="flex:1.5; height: 300px;">
+                <canvas id="c-sim-job-gauge"></canvas>
+              </div>
+              <div class="sim-data-panel" id="sim-job-box" style="flex:1;">
+                <h4 class="panel-title">Risk Assessment</h4>
+                <div class="panel-metric">
+                  <span class="metric-label">Tasks Automatable</span>
+                  <span class="metric-value" id="val-job-risk">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Tasks Retained</span>
+                  <span class="metric-value" id="val-job-safe">--</span>
+                </div>
+                <p class="panel-desc" id="sim-desc-job">Loading data...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 3. CITIZEN SIMULATOR: BUDGET BALANCER                        -->
+        <!-- ============================================================ -->
+        <section id="section-cit-budget" class="dashboard-section citizen-only">
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h2>Fiscal Feasibility Stress Test</h2>
+              <p>Adjust sovereign fiscal levers to model sovereign debt trajectories and deficit ratios under UBI.</p>
+            </div>
+            
+            <div class="sim-controls">
+              <div class="sim-slider-group">
+                <label>UBI Outlay Allocation <span id="sim-bud-ubi-val" class="sim-val-badge">₹0</span></label>
+                <input type="range" id="sim-bud-ubi" min="0" max="3000" step="500" value="0" />
+              </div>
+              <div class="sim-slider-group">
+                <label>Corporate Automation Tax <span id="sim-bud-tax-val" class="sim-val-badge">0%</span></label>
+                <input type="range" id="sim-bud-tax" min="0" max="5" step="1" value="0" />
+              </div>
+              <div class="sim-slider-group">
+                <label>Subsidy Rationalization <span id="sim-bud-sub-val" class="sim-val-badge">None</span></label>
+                <input type="range" id="sim-bud-sub" min="0" max="2" step="1" value="0" />
+                <div class="sim-slider-labels">
+                  <span>None</span>
+                  <span>Partial (50%)</span>
+                  <span>Complete (100%)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sim-output">
+              <div class="sim-chart-container" style="flex:2; height: 350px;">
+                <canvas id="c-sim-budget"></canvas>
+              </div>
+              <div class="sim-data-panel" id="sim-bud-box" style="flex:1;">
+                <h4 class="panel-title">Fiscal Integrity</h4>
+                <div class="panel-metric">
+                  <span class="metric-label">UBI Cost (₹ Trillion)</span>
+                  <span class="metric-value" id="val-bud-cost">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">New Revenue (₹ Trillion)</span>
+                  <span class="metric-value" id="val-bud-rev">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Deficit to GDP Ratio</span>
+                  <span class="metric-value" id="val-bud-def">--</span>
+                </div>
+                <p class="panel-desc" id="sim-desc-bud">Loading...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 4. CITIZEN SIMULATOR: STATE MATCHMAKER                       -->
+        <!-- ============================================================ -->
+        <section id="section-cit-state" class="dashboard-section citizen-only">
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h2>Regional Readiness Data</h2>
+              <p>Evaluate state-level preparedness metrics derived from the IAAVI and UBIRI indices.</p>
+            </div>
+            
+            <div class="sim-controls" style="margin-bottom: 20px;">
+              <select id="sim-state-select" class="form-select">
+                <!-- Populated by JS -->
+                <option value="KA">Karnataka</option>
+              </select>
+            </div>
+
+            <div class="sim-output">
+              <div class="sim-chart-container" style="flex:1; height: 300px;">
+                <canvas id="c-sim-state-ai"></canvas>
+              </div>
+              <div class="sim-chart-container" style="flex:1; height: 300px;">
+                <canvas id="c-sim-state-ubi"></canvas>
+              </div>
+              <div class="sim-data-panel" id="sim-state-box" style="flex:1;">
+                <h4 class="panel-title">Index Assessment</h4>
+                <div class="panel-metric">
+                  <span class="metric-label">IAAVI Composite</span>
+                  <span class="metric-value" id="val-state-ai">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">UBIRI Composite</span>
+                  <span class="metric-value" id="val-state-ubi">--</span>
+                </div>
+                <p class="panel-desc" id="sim-desc-state">Loading...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 5. CITIZEN SIMULATOR: EQUALITY ENGINE                        -->
+        <!-- ============================================================ -->
+        <section id="section-cit-equality" class="dashboard-section citizen-only">
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h2>Gini & Wealth Distribution Modeler</h2>
+              <p>Simulate macro-wealth redistribution effects and Gini coefficient compression under continuous UBI disbursements.</p>
+            </div>
+            
+            <div class="sim-controls">
+              <div class="sim-slider-group" style="max-width: 100%;">
+                <label>UBI Capital Transfer Magnitude <span id="sim-eq-val" class="sim-val-badge">Baseline</span></label>
+                <input type="range" id="sim-eq-slider" min="0" max="100" value="0" />
+              </div>
+            </div>
+
+            <div class="sim-output">
+              <div class="sim-chart-container" style="flex:2; height: 300px;">
+                <canvas id="c-sim-equality"></canvas>
+              </div>
+              <div class="sim-data-panel" id="sim-eq-box" style="flex:1;">
+                <h4 class="panel-title">Distribution Shifts</h4>
+                <div class="panel-metric">
+                  <span class="metric-label">Top 1% Share</span>
+                  <span class="metric-value" id="val-eq-top">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Bottom 50% Share</span>
+                  <span class="metric-value" id="val-eq-bot">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Est. Gini Shift</span>
+                  <span class="metric-value" id="val-eq-gini">--</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- 6. CITIZEN SIMULATOR: RESKILLING PLAYGROUND                  -->
+        <!-- ============================================================ -->
+        <section id="section-cit-reskill" class="dashboard-section citizen-only">
+          <div class="simulator-card">
+            <div class="sim-header">
+              <h2>Labor Transition Trajectory</h2>
+              <p>Model individual income trajectories correlating UBI capital floors with vocational reskilling utilization over a 10-year horizon.</p>
+            </div>
+            
+            <div class="sim-controls">
+              <div class="sim-slider-group" style="max-width: 100%;">
+                <label>Vocational Reskilling Utilization Rate <span id="sim-reskill-val" class="sim-val-badge">Zero</span></label>
+                <input type="range" id="sim-reskill-slider" min="0" max="10" value="0" />
+              </div>
+            </div>
+
+            <div class="sim-output">
+              <div class="sim-chart-container" style="flex:2; height: 300px;">
+                <canvas id="c-sim-reskill"></canvas>
+              </div>
+              <div class="sim-data-panel" id="sim-reskill-box" style="flex:1;">
+                <h4 class="panel-title">10-Year Outlook</h4>
+                <div class="panel-metric">
+                  <span class="metric-label">Base UBI Income</span>
+                  <span class="metric-value" id="val-reskill-base">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Skilled Income</span>
+                  <span class="metric-value" id="val-reskill-skill">--</span>
+                </div>
+                <div class="panel-metric">
+                  <span class="metric-label">Wage Delta</span>
+                  <span class="metric-value" id="val-reskill-delta">--</span>
+                </div>
+                <p class="panel-desc" id="sim-desc-reskill">Loading...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 0: EXECUTIVE SUMMARY                                  -->
+        <!-- ============================================================ -->
+        <section id="section-executive" class="dashboard-section active">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Executive Summary</span>
+            <h2>Project ARTHA — Should India Introduce UBI in the Age of AI?</h2>
+            <p class="section-lead">A publication-quality policy research project combining original indices, fiscal simulations, state rankings, parliamentary intelligence, and an adaptive policy framework.</p>
+          </div>
+
+          <!-- KPI METRICS GRID -->
+          <div class="kpi-grid">
+            <div class="kpi-card">
+              <span class="kpi-label">National Unemployment</span>
+              <div class="kpi-value-wrapper"><span class="kpi-value" data-target="3.1" data-suffix="%" data-decimals="1">0%</span></div>
+              <p class="kpi-desc">PLFS 2025 — Usual Status (PS+SS), 15+ years</p>
+              <div class="kpi-meta">PLFS Annual Report 2025, MoSPI</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Jobs at AI Risk</span>
+              <div class="kpi-value-wrapper"><span class="kpi-value text-accent-red" data-target="69" data-suffix="%">0%</span></div>
+              <p class="kpi-desc">Share of tasks susceptible to AI automation</p>
+              <div class="kpi-meta">ORF / McKinsey MGI (2023)</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Minimal UBI Cost</span>
+              <div class="kpi-value-wrapper"><span class="kpi-value" data-prefix="₹" data-target="5.76" data-suffix="T" data-decimals="2">₹0.00T</span></div>
+              <p class="kpi-desc">₹500/mo × 960M adults = 1.74% of GDP</p>
+              <div class="kpi-meta">Author calc. | GDP ₹330.68T (NSO FY25)</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">Gig Workers (FY25)</span>
+              <div class="kpi-value-wrapper"><span class="kpi-value text-accent-green" data-target="12" data-suffix="M">0M</span></div>
+              <p class="kpi-desc">23.5M projected by 2030</p>
+              <div class="kpi-meta">Economic Survey 2025-26</div>
+            </div>
+            <div class="kpi-card">
+              <span class="kpi-label">States Indexed</span>
+              <div class="kpi-value-wrapper"><span class="kpi-value" data-target="32" data-suffix="">0</span></div>
+              <p class="kpi-desc">Original IAAVI & UBIRI indices</p>
+              <div class="kpi-meta">Original Research — This Study</div>
+            </div>
+          </div>
+
+          <!-- EXECUTIVE PROSE -->
+          <div class="prose-section">
+            <div class="prose-toggle-header" data-target="exec-prose">
+              <h3>Research Overview</h3>
+              <span class="toggle-indicator">▼ Read Full Analysis</span>
+            </div>
+            <div class="prose-content" id="exec-prose">
+              <p>India stands at a critical inflection point. With the world's largest working-age population — over 960 million adults — the country faces a paradox of unprecedented proportions: rapid technological advancement through AI and automation threatens to displace tens of millions of workers even as the economy requires the creation of 10–12 million new jobs annually to absorb its demographic dividend.</p>
+              <p>This research project goes beyond literature review to produce <strong>original analytical contributions</strong>: two novel indices (the India AI Automation Vulnerability Index and the UBI Readiness Index), a multi-scenario fiscal simulation engine, year-by-year projections through 2040, comprehensive parliamentary intelligence mapping, and an original adaptive policy framework — the AI Adaptive Basic Income Framework (AABIF) — that dynamically links automation rates to welfare support.</p>
+              <p>The research draws on data from the Periodic Labour Force Survey 2025, Union Budget 2026-27, Economic Survey 2025-26, UIDAI Aadhaar dashboard, PMJDY statistics, World Inequality Report 2026, and over 30 primary government and institutional sources. Every major claim is supported by evidence and citations.</p>
+              <h4>Key Findings</h4>
+              <ul>
+                <li><strong>AI Vulnerability:</strong> Bihar, Uttar Pradesh, Jharkhand, and Rajasthan emerge as the most vulnerable states to AI-driven automation, scoring above 65 on the IAAVI index.</li>
+                <li><strong>UBI Readiness:</strong> Delhi, Chandigarh, Kerala, and Goa lead UBI readiness; northeastern states and Bihar lag significantly.</li>
+                <li><strong>Fiscal Reality:</strong> A minimal UBI of ₹500/month costs 1.74% of GDP; a meaningful ₹3,000/month costs 10.45% — comparable to defence spending.</li>
+                <li><strong>The AABIF Solution:</strong> An adaptive framework that starts at ₹1,000/month and scales to ₹3,000+ as automation accelerates is both fiscally viable and maximally protective.</li>
+                <li><strong>Scenario Winner:</strong> Full UBI with managed AI transition produces the best outcomes across all indicators by 2040 — including 3.5% unemployment, 1.5% poverty, and 7.5% GDP growth.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 1: LABOUR MARKET                                      -->
+        <!-- ============================================================ -->
+        <section id="section-labor" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 01 · Evidence Base</span>
+            <h2>India's Labour Market — Key Indicators</h2>
+            <p class="section-lead">PLFS 2025 data: National unemployment at 3.1% (PS+SS); female LFPR surged to 41.7% in 2023-24; informal employment remains ~90%.</p>
+          </div>
+
+          <div class="chart-cards-grid grid-2">
+            <div class="chart-card-wrapper" data-tags="lfpr gender trends labor force mospi plfs">
+              <div class="chart-header"><span class="chart-code">Chart 01</span><h3>Labour Force Participation Rate — Gender Trends</h3><p class="chart-sub">Annual estimates, 15+ years (UPSS basis), 2017–18 to 2024–25</p></div>
+              <div class="chart-container"><canvas id="c1"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: PLFS Annual Reports 2017–18 to 2024–25, MoSPI</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="unemployment urban rate monthly trends cmie plfs covid">
+              <div class="chart-header"><span class="chart-code">Chart 02</span><h3>Monthly Urban Unemployment Rate (CMIE + PLFS)</h3><p class="chart-sub">CMIE: Jan 2019 – Dec 2023; PLFS Monthly Bulletin: Jan–Apr 2025</p></div>
+              <div class="chart-container"><canvas id="c2"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: CMIE Consumer Pyramids (2019–2024); PLFS Monthly Bulletin (2025)</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="sector employment distribution agriculture services manufacturing">
+              <div class="chart-header"><span class="chart-code">Chart 03</span><h3>Workforce Distribution by Sector (2024–25)</h3><p class="chart-sub">Share of total employment, ~600 million workers (UPSS basis, 15+)</p></div>
+              <div class="chart-container container-doughnut"><canvas id="c3"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: PLFS 2024–25; Economic Survey 2025–26</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="female lfpr international comparison global world bank ilo">
+              <div class="chart-header"><span class="chart-code">Chart 04</span><h3>Female LFPR — International Comparison</h3><p class="chart-sub">% of female population, ages 15+, 2024 (ILO modeled estimates)</p></div>
+              <div class="chart-container"><canvas id="c4"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: World Bank WDI (2023); ILO STAT</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 2: AI & AUTOMATION RISK                               -->
+        <!-- ============================================================ -->
+        <section id="section-ai" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 02 · Automation Analysis</span>
+            <h2>AI Automation Exposure & Job Displacement Risk</h2>
+            <p class="section-lead">Task-based vulnerability estimates. 69% of Indian jobs face high automation risk under accelerated AI adoption scenarios.</p>
+          </div>
+
+          <div class="chart-cards-grid grid-1">
+            <div class="chart-card-wrapper" data-tags="automation risk sector tasks manufacturing it bpo banking">
+              <div class="chart-header"><span class="chart-code">Chart 05</span><h3>Automation Risk by Sector — % of Tasks Automatable</h3><p class="chart-sub">Task-based occupational risk framework; estimated share susceptible to AI/robotics, 2024–2030</p></div>
+              <div class="chart-container tall-chart"><canvas id="c5"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: McKinsey MGI (2023); NASSCOM (2024); ORF (2019); WEF Future of Jobs (2023)</span></div>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="india global automation risk education informal formal gig">
+              <div class="chart-header"><span class="chart-code">Chart 06</span><h3>India vs Global — Jobs at High Automation Risk</h3><p class="chart-sub">By education level and employment type</p></div>
+              <div class="chart-container"><canvas id="c6"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: McKinsey MGI (2023); ILO WESO (2023)</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="gig economy growth trajectory workers projections niti aayog">
+              <div class="chart-header"><span class="chart-code">Chart 07</span><h3>India's Gig Economy — Worker Growth (Millions)</h3><p class="chart-sub">Actual 2019–2025; projected 2026–2030</p></div>
+              <div class="chart-container"><canvas id="c7"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Economic Survey 2025-26; NITI Aayog (2022)</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 3: IAAVI — AI AUTOMATION VULNERABILITY INDEX           -->
+        <!-- ============================================================ -->
+        <section id="section-iaavi" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 03 · Original Index</span>
+            <h2>India AI Automation Vulnerability Index (IAAVI)</h2>
+            <p class="section-lead">An original composite index measuring each state's vulnerability to AI-driven job displacement. 8 components, weighted, normalized 0–100. Higher score = more vulnerable.</p>
+          </div>
+
+          <!-- Methodology Panel -->
+          <div class="methodology-panel">
+            <button class="methodology-toggle" data-target="iaavi-method">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>Methodology: How is IAAVI Calculated?</span>
+            </button>
+            <div class="methodology-content" id="iaavi-method">
+              <p><strong>IAAVI = Σ (Wᵢ × Nᵢ)</strong>, where Wᵢ is the weight and Nᵢ is the normalized score (0–100) for component i.</p>
+              <div class="weight-grid" id="iaavi-weights"></div>
+              <p class="methodology-note">All components normalized via min-max scaling across states. Higher raw values indicate greater vulnerability. Data sources: PLFS 2025, NASSCOM 2024, UIDAI, e-Shram, NSO.</p>
+              <p class="methodology-note"><strong>Limitations:</strong> (1) Some state-level data interpolated from national aggregates; (2) BPO employment concentrated in metros, not evenly distributed within states; (3) AI readiness is an inverse composite estimate, not a direct measurement; (4) Temporal variation in informal sector definitions across surveys.</p>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-1">
+            <div class="chart-card-wrapper" data-tags="iaavi state rankings vulnerability automation index">
+              <div class="chart-header"><span class="chart-code">Chart 08</span><h3>IAAVI State Rankings — Most to Least Vulnerable</h3><p class="chart-sub">Composite score (0–100). Higher = more vulnerable to AI automation</p></div>
+              <div class="chart-container" style="height:600px"><canvas id="c-iaavi-rank"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Original calculation — IAAVI (this study). Data: PLFS 2025, NASSCOM, UIDAI, e-Shram</span></div>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="iaavi radar components top vulnerable states">
+              <div class="chart-header"><span class="chart-code">Chart 09</span><h3>IAAVI Component Profile — Top 5 Most Vulnerable</h3><p class="chart-sub">Radar view of vulnerability drivers for highest-scoring states</p></div>
+              <div class="chart-container container-radar"><canvas id="c-iaavi-radar"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Original calculation — IAAVI (this study)</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="iaavi ubiri cross scatter correlation readiness vulnerability">
+              <div class="chart-header"><span class="chart-code">Chart 10</span><h3>IAAVI vs UBIRI — Cross-Index Scatter</h3><p class="chart-sub">States with high vulnerability AND low readiness face the greatest policy challenge</p></div>
+              <div class="chart-container"><canvas id="c-cross-scatter"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Original calculation — IAAVI & UBIRI (this study)</span></div>
+            </div>
+          </div>
+
+          <!-- State Ranking Table -->
+          <div class="ranking-table-wrapper margin-top-32">
+            <h3 class="table-title">Complete IAAVI State Rankings</h3>
+            <div class="table-responsive">
+              <table id="iaavi-ranking-table" class="ranking-table">
+                <thead>
+                  <tr>
+                    <th>Rank</th><th>State</th><th>IAAVI Score</th><th>Classification</th><th>Score Bar</th>
+                  </tr>
+                </thead>
+                <tbody id="iaavi-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 4: UBIRI — UBI READINESS INDEX                        -->
+        <!-- ============================================================ -->
+        <section id="section-ubiri" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 04 · Original Index</span>
+            <h2>Universal Basic Income Readiness Index (UBIRI)</h2>
+            <p class="section-lead">An original composite index measuring each state's infrastructure readiness for implementing a UBI scheme. 10 components, weighted, normalized 0–100. Higher score = more ready.</p>
+          </div>
+
+          <div class="methodology-panel">
+            <button class="methodology-toggle" data-target="ubiri-method">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+              <span>Methodology: How is UBIRI Calculated?</span>
+            </button>
+            <div class="methodology-content" id="ubiri-method">
+              <p><strong>UBIRI = Σ (Wᵢ × Nᵢ)</strong>, where Wᵢ is the weight and Nᵢ is the normalized score (0–100) for component i.</p>
+              <div class="weight-grid" id="ubiri-weights"></div>
+              <p class="methodology-note">Poverty rate is inverted: higher poverty → lower readiness score. Data sources: UIDAI, PMJDY, TRAI, NSO, RBI, CAG reports.</p>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-1">
+            <div class="chart-card-wrapper" data-tags="ubiri state rankings readiness ubi infrastructure">
+              <div class="chart-header"><span class="chart-code">Chart 11</span><h3>UBIRI State Rankings — Most to Least Ready</h3><p class="chart-sub">Composite score (0–100). Higher = more ready for UBI implementation</p></div>
+              <div class="chart-container" style="height:600px"><canvas id="c-ubiri-rank"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Original calculation — UBIRI (this study). Data: UIDAI, PMJDY, TRAI, NSO, RBI</span></div>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="ubiri radar components top ready states">
+              <div class="chart-header"><span class="chart-code">Chart 12</span><h3>UBIRI Component Profile — Top 5 vs Bottom 5</h3><p class="chart-sub">Radar comparison of readiness dimensions</p></div>
+              <div class="chart-container container-radar"><canvas id="c-ubiri-radar"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Original calculation — UBIRI (this study)</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="inequality wealth distribution dbt dbT infrastructure">
+              <div class="chart-header"><span class="chart-code">Chart 13</span><h3>Wealth Distribution — Share by Decile (2025)</h3><p class="chart-sub">Top 1% hold 40%, top 10% hold ~65% of national wealth</p></div>
+              <div class="chart-container"><canvas id="c13"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: World Inequality Report 2026 (WID.world); Oxfam India 2025</span></div>
+            </div>
+          </div>
+
+          <div class="ranking-table-wrapper margin-top-32">
+            <h3 class="table-title">Complete UBIRI State Rankings</h3>
+            <div class="table-responsive">
+              <table id="ubiri-ranking-table" class="ranking-table">
+                <thead><tr><th>Rank</th><th>State</th><th>UBIRI Score</th><th>Classification</th><th>Score Bar</th></tr></thead>
+                <tbody id="ubiri-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 5: FISCAL SIMULATION ENGINE                           -->
+        <!-- ============================================================ -->
+        <section id="section-fiscal" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 05 · Fiscal Simulator</span>
+            <h2>Fiscal Simulation Engine — UBI Cost Scenarios</h2>
+            <p class="section-lead">Interactive cost modelling. GDP: ₹330.68T (FY25 NSO). Budget: ₹53.5T (FY27). Fiscal Deficit Target: 4.3% of GDP.</p>
+          </div>
+
+          <!-- Interactive Calculator -->
+          <div class="fiscal-calculator">
+            <h3>Interactive UBI Cost Calculator</h3>
+            <div class="calc-controls">
+              <div class="calc-slider-group">
+                <label for="ubi-amount-slider">Monthly Amount per Person</label>
+                <input type="range" id="ubi-amount-slider" min="500" max="6000" step="100" value="1000" />
+                <div class="slider-value" id="ubi-amount-display">₹1,000</div>
+              </div>
+              <div class="calc-slider-group">
+                <label for="ubi-coverage-slider">Coverage (% of Adult Population)</label>
+                <input type="range" id="ubi-coverage-slider" min="20" max="100" step="5" value="100" />
+                <div class="slider-value" id="ubi-coverage-display">100% (960M)</div>
+              </div>
+            </div>
+            <div class="calc-results">
+              <div class="calc-result-card">
+                <span class="calc-label">Annual Cost</span>
+                <span class="calc-value" id="calc-annual-cost">₹11.52T</span>
+              </div>
+              <div class="calc-result-card">
+                <span class="calc-label">% of GDP</span>
+                <span class="calc-value" id="calc-gdp-pct">3.48%</span>
+              </div>
+              <div class="calc-result-card">
+                <span class="calc-label">% of Budget</span>
+                <span class="calc-value" id="calc-budget-pct">21.5%</span>
+              </div>
+              <div class="calc-result-card">
+                <span class="calc-label">New Fiscal Deficit</span>
+                <span class="calc-value" id="calc-deficit">7.78%</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-1 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="ubi cost scenarios gdp fiscal deficit">
+              <div class="chart-header"><span class="chart-code">Chart 14</span><h3>UBI Cost Scenarios — Annual Cost as % of GDP</h3><p class="chart-sub">Four scenarios from ₹500 to ₹6,000/mo; universal adult coverage (960M)</p></div>
+              <div class="chart-container tall-chart"><canvas id="c8"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author calc.; GDP ₹330.68T (NSO FY25); Adult pop. ~960M</span></div>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="welfare schemes subsidies budget comparison">
+              <div class="chart-header"><span class="chart-code">Chart 15</span><h3>UBI Scenario A vs Existing Welfare Schemes</h3><p class="chart-sub">Annual expenditure comparison (₹ Trillion, Union Budget 2026–27)</p></div>
+              <div class="chart-container"><canvas id="c9"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Union Budget 2026-27 (MoF)</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="funding mix revenue source tax wealth subsidy">
+              <div class="chart-header"><span class="chart-code">Chart 16</span><h3>Proposed UBI Funding Mix — Scenario A</h3><p class="chart-sub">Illustrative financing breakdown by revenue source</p></div>
+              <div class="chart-container container-pie"><canvas id="c10"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author analysis; Economic Survey 2016–17; IMF Fiscal Monitor</span></div>
+            </div>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="fiscal deficit impact scenario analysis debt">
+              <div class="chart-header"><span class="chart-code">Chart 17</span><h3>Fiscal Deficit Impact by UBI Scenario</h3><p class="chart-sub">Current deficit (4.3%) + UBI cost as additional deficit</p></div>
+              <div class="chart-container"><canvas id="c-fiscal-deficit"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author calc.; Union Budget 2026-27; RBI</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="dbt growth direct benefit transfer">
+              <div class="chart-header"><span class="chart-code">Chart 18</span><h3>DBT Growth in India (₹ Trillion)</h3><p class="chart-sub">Annual disbursements FY15–FY25; cumulative ₹43.35T</p></div>
+              <div class="chart-container"><canvas id="c14"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: DBT Mission, Cabinet Secretariat; FY25 provisional</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 6: INDIA 2040 SCENARIOS                               -->
+        <!-- ============================================================ -->
+        <section id="section-scenarios" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 06 · Future Scenarios</span>
+            <h2>India 2040 — Three Futures Compared</h2>
+            <p class="section-lead">Year-by-year projections (2026–2040) under three policy paths: No UBI, Partial UBI, and Full UBI with managed AI transition.</p>
+          </div>
+
+          <!-- Scenario Selector -->
+          <div class="scenario-selector">
+            <button class="scenario-btn active" data-scenario="all">Compare All</button>
+            <button class="scenario-btn" data-scenario="scenario1" style="--sc-color:#C0392B">No UBI</button>
+            <button class="scenario-btn" data-scenario="scenario2" style="--sc-color:#C9A84C">Partial UBI</button>
+            <button class="scenario-btn" data-scenario="scenario3" style="--sc-color:#1E8449">Full UBI</button>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="scenario unemployment projection 2040">
+              <div class="chart-header"><span class="chart-code">Chart 19</span><h3>Unemployment Rate Projection (2026–2040)</h3><p class="chart-sub">Three scenarios compared</p></div>
+              <div class="chart-container"><canvas id="c-sc-unemployment"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author projections based on PLFS trends, ILO models, McKinsey automation scenarios</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="scenario poverty rate projection 2040">
+              <div class="chart-header"><span class="chart-code">Chart 20</span><h3>Poverty Rate Projection (2026–2040)</h3><p class="chart-sub">Multidimensional poverty headcount ratio</p></div>
+              <div class="chart-container"><canvas id="c-sc-poverty"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author projections; World Bank poverty methodology</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="scenario gdp growth projection 2040">
+              <div class="chart-header"><span class="chart-code">Chart 21</span><h3>GDP Growth Rate Projection (2026–2040)</h3><p class="chart-sub">Real GDP growth (annual %)</p></div>
+              <div class="chart-container"><canvas id="c-sc-gdp"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author projections; IMF WEO baseline; World Bank India Development Update</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="scenario inequality gini coefficient 2040">
+              <div class="chart-header"><span class="chart-code">Chart 22</span><h3>Inequality Trajectory — Gini Coefficient (2026–2040)</h3><p class="chart-sub">0 = perfect equality; 1 = maximum inequality</p></div>
+              <div class="chart-container"><canvas id="c-sc-gini"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author projections; WID.world baseline; Chancel & Piketty methodology</span></div>
+            </div>
+          </div>
+
+          <!-- 2040 Comparison Summary -->
+          <div class="scenario-summary margin-top-32">
+            <h3 class="table-title">2040 Endpoint Comparison</h3>
+            <div class="scenario-compare-grid">
+              <div class="scenario-compare-card danger">
+                <h4>No UBI</h4>
+                <div class="sc-metric"><span>Unemployment</span><strong>21.5%</strong></div>
+                <div class="sc-metric"><span>Poverty</span><strong>26.5%</strong></div>
+                <div class="sc-metric"><span>GDP Growth</span><strong>2.8%</strong></div>
+                <div class="sc-metric"><span>Gini</span><strong>0.54</strong></div>
+                <div class="sc-verdict">⚠ Worst Outcome</div>
+              </div>
+              <div class="scenario-compare-card warning">
+                <h4>Partial UBI</h4>
+                <div class="sc-metric"><span>Unemployment</span><strong>9.5%</strong></div>
+                <div class="sc-metric"><span>Poverty</span><strong>4.5%</strong></div>
+                <div class="sc-metric"><span>GDP Growth</span><strong>5.5%</strong></div>
+                <div class="sc-metric"><span>Gini</span><strong>0.32</strong></div>
+                <div class="sc-verdict">◐ Moderate Outcome</div>
+              </div>
+              <div class="scenario-compare-card success">
+                <h4>Full UBI + AI Mgmt</h4>
+                <div class="sc-metric"><span>Unemployment</span><strong>3.5%</strong></div>
+                <div class="sc-metric"><span>Poverty</span><strong>1.5%</strong></div>
+                <div class="sc-metric"><span>GDP Growth</span><strong>7.5%</strong></div>
+                <div class="sc-metric"><span>Gini</span><strong>0.27</strong></div>
+                <div class="sc-verdict">★ Best Outcome</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 7: AI DISPLACEMENT MAP                                -->
+        <!-- ============================================================ -->
+        <section id="section-displacement" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 07 · Sector Analysis</span>
+            <h2>AI Job Displacement Map — Sector-by-Sector</h2>
+            <p class="section-lead">13 sectors analyzed for current employment, % tasks at risk, time horizon, likelihood, and confidence level.</p>
+          </div>
+
+          <div class="chart-cards-grid grid-1">
+            <div class="chart-card-wrapper" data-tags="displacement bubble sector employment risk">
+              <div class="chart-header"><span class="chart-code">Chart 23</span><h3>AI Displacement Risk — Sector Bubble Map</h3><p class="chart-sub">X: Current employment (M); Y: % tasks at risk; Bubble size: absolute jobs at risk</p></div>
+              <div class="chart-container tall-chart"><canvas id="c-displacement-bubble"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: McKinsey MGI (2023); NASSCOM (2024); WEF (2023); Author analysis</span></div>
+            </div>
+          </div>
+
+          <!-- Displacement Table -->
+          <div class="ranking-table-wrapper margin-top-32">
+            <h3 class="table-title">Complete Sector Displacement Analysis</h3>
+            <div class="table-responsive">
+              <table class="ranking-table" id="displacement-table">
+                <thead>
+                  <tr><th>Sector</th><th>Current Emp. (M)</th><th>Tasks at Risk (%)</th><th>High Scenario (%)</th><th>Time Horizon</th><th>Likelihood</th><th>Risk Class</th></tr>
+                </thead>
+                <tbody id="displacement-table-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 8: PARLIAMENTARY INTELLIGENCE                         -->
+        <!-- ============================================================ -->
+        <section id="section-parliament" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 08 · Parliamentary Report</span>
+            <h2>Parliamentary Intelligence — UBI & AI Discussions</h2>
+            <p class="section-lead">Key parliamentary debates, party positions, and the political support matrix for UBI in India.</p>
+          </div>
+
+          <!-- Debate Timeline -->
+          <div class="debate-timeline">
+            <h3 class="table-title">Key Parliamentary Events on UBI & AI</h3>
+            <div id="debate-timeline-content" class="timeline-container"></div>
+          </div>
+
+          <!-- Political Support Matrix -->
+          <div class="ranking-table-wrapper margin-top-32">
+            <h3 class="table-title">Political Party Support Matrix</h3>
+            <div class="table-responsive">
+              <table class="ranking-table" id="party-matrix-table">
+                <thead>
+                  <tr><th>Party</th><th>UBI Position</th><th>AI Position</th><th>Transfer Preference</th><th>Key Reasoning</th></tr>
+                </thead>
+                <tbody id="party-matrix-body"></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 9: MINORITY IMPACT                                    -->
+        <!-- ============================================================ -->
+        <section id="section-minority" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 09 · Minority Analysis</span>
+            <h2>Minority Impact Analysis</h2>
+            <p class="section-lead">Analysis based on Sachar Committee (2006), Ranganath Misra Commission (2007), and current Ministry of Minority Affairs data.</p>
+          </div>
+
+          <div class="chart-cards-grid grid-2">
+            <div class="chart-card-wrapper" data-tags="minority sachar committee progress comparison">
+              <div class="chart-header"><span class="chart-code">Chart 24</span><h3>Muslim Socio-Economic Progress: Sachar (2006) vs 2025</h3><p class="chart-sub">Key indicators showing change over two decades</p></div>
+              <div class="chart-container"><canvas id="c-minority-progress"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Sachar Committee (2006); PLFS 2025; Ministry of Minority Affairs</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="scheme effectiveness ubi targeted minority welfare">
+              <div class="chart-header"><span class="chart-code">Chart 25</span><h3>Scheme Effectiveness — UBI vs Targeted Approaches</h3><p class="chart-sub">Composite scores for benefit, leakage, inclusion, and minority reach</p></div>
+              <div class="chart-container container-radar"><canvas id="c-minority-effectiveness"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author analysis; CAG reports; Ministry of Minority Affairs</span></div>
+            </div>
+          </div>
+
+          <div class="prose-section margin-top-32">
+            <div class="prose-toggle-header" data-target="minority-prose">
+              <h3>Would UBI Help Minorities More Than Targeted Schemes?</h3>
+              <span class="toggle-indicator">▼ Read Analysis</span>
+            </div>
+            <div class="prose-content" id="minority-prose">
+              <p>The evidence strongly suggests that a universal approach would benefit religious minorities — particularly Muslims — more effectively than the current fragmented system of targeted minority welfare schemes. The Sachar Committee (2006) documented severe disadvantages: Muslim literacy at 59.1%, urban poverty at 38.4%, and government job representation at only 4.9%. By 2025, while some progress has occurred (literacy up to 68.5%), significant gaps persist.</p>
+              <p><strong>The case for UBI over targeting:</strong> Targeted minority schemes suffer from three fundamental problems: (1) <em>identification errors</em> — the absence of a reliable minority registry means many eligible beneficiaries are excluded; (2) <em>administrative overhead</em> — the Ministry of Minority Affairs budget of ₹3,400 crore (2026-27) represents barely 0.06% of the Union Budget, with low utilization rates; (3) <em>political vulnerability</em> — minority-specific schemes face political pushback and fluctuating allocations. A universal basic income bypasses all three problems: everyone receives it, delivery is automatic via JAM Trinity, and universality provides political durability.</p>
+              <p><strong>Verdict:</strong> Universal UBI with a benefit score of 85/100 and 95% minority reach outperforms targeted minority schemes (65/100, 70% reach) on every metric except fiscal cost.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 10: SURVEY DESIGN                                     -->
+        <!-- ============================================================ -->
+        <section id="section-survey" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 10 · Primary Research</span>
+            <h2>Primary Research Design — Survey Instrument</h2>
+            <p class="section-lead">A structured survey for 250 respondents (100 students, 100 workers, 50 employers) with hypothesis testing framework.</p>
+          </div>
+
+          <div class="survey-overview-grid">
+            <div class="survey-overview-card"><span class="survey-label">Total Sample</span><span class="survey-value">N = 250</span></div>
+            <div class="survey-overview-card"><span class="survey-label">Students (18–25)</span><span class="survey-value">n = 100</span></div>
+            <div class="survey-overview-card"><span class="survey-label">Workers (25–55)</span><span class="survey-value">n = 100</span></div>
+            <div class="survey-overview-card"><span class="survey-label">Employers</span><span class="survey-value">n = 50</span></div>
+          </div>
+
+          <div id="survey-sections-container" class="margin-top-32"></div>
+
+          <!-- Hypothesis Testing Framework -->
+          <div class="hypothesis-framework margin-top-32">
+            <h3 class="table-title">Hypothesis Testing Framework</h3>
+            <div id="hypotheses-list"></div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 11: SWOT & DECISION MATRIX                            -->
+        <!-- ============================================================ -->
+        <section id="section-swot" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 11 · Strategic Analysis</span>
+            <h2>Consulting-Level SWOT & Decision Matrix</h2>
+            <p class="section-lead">Comprehensive SWOT for Universal UBI, Targeted UBI, and No UBI — with a quantitative decision matrix.</p>
+          </div>
+
+          <!-- SWOT Selector -->
+          <div class="swot-selector">
+            <button class="swot-btn active" data-swot="universalUBI">Universal UBI</button>
+            <button class="swot-btn" data-swot="targetedUBI">Targeted UBI</button>
+            <button class="swot-btn" data-swot="noUBI">No UBI</button>
+          </div>
+
+          <div class="swot-grid margin-top-32" id="swot-display">
+            <div class="swot-quadrant strengths"><h4>Strengths</h4><ul id="swot-strengths"></ul></div>
+            <div class="swot-quadrant weaknesses"><h4>Weaknesses</h4><ul id="swot-weaknesses"></ul></div>
+            <div class="swot-quadrant opportunities"><h4>Opportunities</h4><ul id="swot-opportunities"></ul></div>
+            <div class="swot-quadrant threats"><h4>Threats</h4><ul id="swot-threats"></ul></div>
+          </div>
+
+          <div class="chart-cards-grid grid-1 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="decision matrix score comparison">
+              <div class="chart-header"><span class="chart-code">Chart 26</span><h3>Decision Matrix — Quantitative Policy Comparison</h3><p class="chart-sub">Scored across 8 criteria: fiscal viability, inclusion, political feasibility, poverty impact, implementation ease, scalability, equity, sustainability</p></div>
+              <div class="chart-container"><canvas id="c-decision-matrix"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author analysis (this study)</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 12: AABIF — ORIGINAL POLICY FRAMEWORK                 -->
+        <!-- ============================================================ -->
+        <section id="section-aabif" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 12 · Original Contribution</span>
+            <h2>AI Adaptive Basic Income Framework (AABIF)</h2>
+            <p class="section-lead">An original adaptive welfare model that dynamically links AI automation rates to income support levels. This is the study's primary original policy contribution.</p>
+          </div>
+
+          <div class="aabif-hero">
+            <div class="aabif-formula-card">
+              <h3>The AABIF Formula</h3>
+              <div class="formula-display">AABIF<sub>Transfer</sub> = Base × (1 + α<sub>automation</sub> × W<sub>sector</sub>) × R<sub>regional</sub></div>
+              <p class="formula-explain">Where α = automation rate (0–1), W = sector weight, R = UBIRI-derived regional adjustment</p>
+            </div>
+          </div>
+
+          <div class="aabif-principles margin-top-32">
+            <h3 class="table-title">Core Design Principles</h3>
+            <div id="aabif-principles-grid" class="principles-grid"></div>
+          </div>
+
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="aabif funding sources revenue breakdown">
+              <div class="chart-header"><span class="chart-code">Chart 27</span><h3>AABIF Funding Sources — Revenue Mix</h3><p class="chart-sub">₹10T total annual funding target by 2035</p></div>
+              <div class="chart-container container-pie"><canvas id="c-aabif-funding"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author proposal (this study)</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="aabif pilot design timeline phases rollout">
+              <div class="chart-header"><span class="chart-code">Chart 28</span><h3>AABIF Pilot Rollout Timeline</h3><p class="chart-sub">4-phase implementation: 2027 district pilot → 2040 national rollout</p></div>
+              <div class="chart-container"><canvas id="c-aabif-timeline"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Author proposal (this study)</span></div>
+            </div>
+          </div>
+
+          <!-- Technology & Governance -->
+          <div class="aabif-details-grid margin-top-32">
+            <div class="aabif-detail-card">
+              <h4>Technology Stack</h4>
+              <ul id="aabif-tech-list"></ul>
+            </div>
+            <div class="aabif-detail-card">
+              <h4>Governance Structure</h4>
+              <ul id="aabif-gov-list"></ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 13: POLICY RECOMMENDATIONS                            -->
+        <!-- ============================================================ -->
+        <section id="section-recommendations" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">Phase 13 · Recommendations</span>
+            <h2>Policy Recommendations — 2026 to 2040</h2>
+            <p class="section-lead">A phased implementation roadmap: Foundation (2026–2030), Scaling (2030–2035), Universal (2035–2040).</p>
+          </div>
+
+          <div class="roadmap-container" id="roadmap-display"></div>
+
+          <!-- Global Pilots Comparison -->
+          <div class="chart-cards-grid grid-2 margin-top-32">
+            <div class="chart-card-wrapper" data-tags="global pilot transfer amounts comparison">
+              <div class="chart-header"><span class="chart-code">Chart 29</span><h3>Global UBI Pilot Transfers — PPP Comparison</h3><p class="chart-sub">Monthly transfer values in 2020 USD PPP</p></div>
+              <div class="chart-container"><canvas id="c11"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Banerjee et al. (2019); Kela (2020); GiveDirectly (2023); Stanford Basic Income Lab</span></div>
+            </div>
+            <div class="chart-card-wrapper" data-tags="pilot outcomes wellbeing radar comparison">
+              <div class="chart-header"><span class="chart-code">Chart 30</span><h3>UBI Pilot Outcomes — Multi-Dimensional</h3><p class="chart-sub">Composite improvement scores across 7 dimensions</p></div>
+              <div class="chart-container container-radar"><canvas id="c12"></canvas></div>
+              <div class="chart-footer"><span class="source-info">SOURCE: Finland Kela (2020); GiveDirectly (2023); Stockton SEED (2021); India MP Pilot SEWA (2012)</span></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- SECTION 14: BIBLIOGRAPHY                                      -->
+        <!-- ============================================================ -->
+        <section id="section-bibliography" class="dashboard-section">
+          <div class="section-title-wrapper">
+            <span class="section-badge">References</span>
+            <h2>Bibliography — APA 7th Edition</h2>
+            <p class="section-lead">All sources used in this research project, formatted in APA 7th edition style.</p>
+          </div>
+          <div class="bibliography-list" id="bibliography-content"></div>
+        </section>
+
+        <!-- ============================================================ -->
+        <!-- FOOTER                                                        -->
+        <!-- ============================================================ -->
+        <section class="footer-section">
+          <div class="insight-card">
+            <div class="insight-icon">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            </div>
+            <div class="insight-content">
+              <strong>Research Note (Data as of June 2026):</strong>
+              <p>This research platform uses the most recently published data as of June 2026. Key sources include PLFS Annual Report 2025 (MoSPI), Union Budget 2026-27 (MoF), Economic Survey 2025-26, UIDAI Aadhaar Dashboard, PMJDY Portal, World Inequality Report 2026, and numerous peer-reviewed publications. The IAAVI and UBIRI are original indices created for this study. The AABIF framework is an original policy contribution. All projections use clearly stated assumptions and should be interpreted as illustrative scenarios, not forecasts.</p>
+            </div>
+          </div>
+          <footer class="app-footer">
+            <p>PROJECT ARTHA · FUTURE OF WORK WITHOUT JOBS · UBI IN THE AGE OF AI · JUNE 2026</p>
+          </footer>
+        </section>
+
+      </div>
+    </main>
+  </div>
+
+  <!-- EXPLANATION MODAL -->
+  <div id="explanation-modal" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close-btn">&times;</button>
+      <div class="modal-icon">💡</div>
+      <h3 id="modal-title">Explanation</h3>
+      <p id="modal-text">Here is a simple explanation of this chart.</p>
+    </div>
+  </div>
+
+  <script src="app.js?v=3"></script>
+</body>
+</html>
