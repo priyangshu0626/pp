@@ -160,28 +160,21 @@ document.addEventListener('DOMContentLoaded', () => {
   function initCitizenSimForTab(tab) {
     switch (tab) {
       case 'cit-future':
-        if (_simFutureChart) { _simFutureChart.destroy(); _simFutureChart = null; }
         waitForCanvas('c-sim-future', function() { initFutureSimulator(); });
         break;
       case 'cit-job':
-        if (_simJobChart) { _simJobChart.destroy(); _simJobChart = null; }
         waitForCanvas('c-sim-job-gauge', function() { initJobRiskSimulator(); });
         break;
       case 'cit-budget':
-        if (_simBudgetChart) { _simBudgetChart.destroy(); _simBudgetChart = null; }
         waitForCanvas('c-sim-budget', function() { initBudgetSimulator(); });
         break;
       case 'cit-state':
-        if (_simStateAiChart) { _simStateAiChart.destroy(); _simStateAiChart = null; }
-        if (_simStateUbiChart) { _simStateUbiChart.destroy(); _simStateUbiChart = null; }
         waitForCanvas('c-sim-state-ai', function() { initStateSimulator(); });
         break;
       case 'cit-equality':
-        if (_simEqualityChart) { _simEqualityChart.destroy(); _simEqualityChart = null; }
         waitForCanvas('c-sim-equality', function() { initEqualitySimulator(); });
         break;
       case 'cit-reskill':
-        if (_simReskillChart) { _simReskillChart.destroy(); _simReskillChart = null; }
         waitForCanvas('c-sim-reskill', function() { initReskillSimulator(); });
         break;
     }
@@ -1007,13 +1000,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Force-destroy all citizen simulator chart instances so they can be
     // recreated fresh on visible canvases.
     function destroyAllSimCharts() {
-      if (_simFutureChart) { _simFutureChart.destroy(); _simFutureChart = null; }
-      if (_simJobChart) { _simJobChart.destroy(); _simJobChart = null; }
-      if (_simBudgetChart) { _simBudgetChart.destroy(); _simBudgetChart = null; }
-      if (_simStateAiChart) { _simStateAiChart.destroy(); _simStateAiChart = null; }
-      if (_simStateUbiChart) { _simStateUbiChart.destroy(); _simStateUbiChart = null; }
-      if (_simEqualityChart) { _simEqualityChart.destroy(); _simEqualityChart = null; }
-      if (_simReskillChart) { _simReskillChart.destroy(); _simReskillChart = null; }
+
     }
 
     function updateMode() {
@@ -1215,10 +1202,7 @@ document.addEventListener('DOMContentLoaded', () => {
       _simListenersAttached = true;
     }
     
-    // Destroy and recreate if chart exists but canvas was hidden (zero dimensions)
-    if (_simFutureChart && canvas.clientWidth === 0) {
-      _simFutureChart.destroy(); _simFutureChart = null;
-    }
+
     updateSimulation();
     // NOTE: Other simulators are NOT called here. Each is lazy-initialized
     // when its own tab becomes active via initCitizenSimForTab().
@@ -1264,7 +1248,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (!select._simListenerAttached) { select.addEventListener('change', update); select._simListenerAttached = true; }
-    if (_simJobChart && canvas.clientWidth === 0) { _simJobChart.destroy(); _simJobChart = null; }
+
     update();
   }
 
@@ -1336,7 +1320,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ubiSlider.addEventListener('input', update); taxSlider.addEventListener('input', update); subSlider.addEventListener('input', update);
       ubiSlider._simListenerAttached = true;
     }
-    if (_simBudgetChart && canvas.clientWidth === 0) { _simBudgetChart.destroy(); _simBudgetChart = null; }
+
     update();
   }
 
@@ -1390,8 +1374,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (!select._simListenerAttached) { select.addEventListener('change', update); select._simListenerAttached = true; }
-    if (_simStateAiChart && cAi.clientWidth === 0) { _simStateAiChart.destroy(); _simStateAiChart = null; }
-    if (_simStateUbiChart && cUbi && cUbi.clientWidth === 0) { _simStateUbiChart.destroy(); _simStateUbiChart = null; }
+
     update();
   }
 
@@ -1437,7 +1420,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (!slider._simListenerAttached) { slider.addEventListener('input', update); slider._simListenerAttached = true; }
-    if (_simEqualityChart && canvas.clientWidth === 0) { _simEqualityChart.destroy(); _simEqualityChart = null; }
+
     update();
   }
 
@@ -1496,7 +1479,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
     if (!slider._simListenerAttached) { slider.addEventListener('input', update); slider._simListenerAttached = true; }
-    if (_simReskillChart && canvas.clientWidth === 0) { _simReskillChart.destroy(); _simReskillChart = null; }
+
     update();
   }
 
